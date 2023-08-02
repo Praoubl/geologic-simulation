@@ -113,7 +113,7 @@ var mapSeeds={
   boundaries2:Math.random()
 };
 var scene="map";
-var erosionMax=0.2;
+var erosionMax=0.3;
 var mapSplines={
   base:{x:
 [0,0.075,0.2,0.5,0.54,0.57,0.59,1],y:   
@@ -127,7 +127,7 @@ var mapSplines={
   boundaries2:{x:[0,0.2,0.2,0.4,0.4,0.6,0.6,0.8,0.8,1],y:[1,1,3,3,7,7,13,13,17,17]},
   boundaries3:{x:[0,0.1,0.1,1],y:[0,0,1,1]}
 };
-var erosionEquilibrium=0.34;
+var erosionEquilibrium=0.36;
 var baseTer=[];
 var erosion=[];
 var mountainousness=[];
@@ -623,7 +623,7 @@ draw=function(){
         map.ter[i][j]=Math.min(1,map.ter[i][j]+LIPs[i][j]);
         plates[i][j]=lerpSpline(mapSplines.boundaries3.x,mapSplines.boundaries3.y,plates[i][j])*(plates[i][j]+((boundaries[i][j]*boundaries2[i][j])%5.00000001));
         plates2[i][j]=lerpSpline(mapSplines.plates2.x,mapSplines.plates2.y,plates[i][j]);
-        map.ter[i][j]+=plates2[i][j];
+        map.ter[i][j]+=((plates2[i][j])*(1-(3*erosion[i][j])));
         map.ter[i][j]=((map.ter[i][j]-erosionEquilibrium)*(1-erosion[i][j]))+erosionEquilibrium;
         if(map.ter[i][j]<0.5){
           tiles[i][j][0]={r:10,g:30,b:20+180*(map.ter[i][j])};
