@@ -116,14 +116,14 @@ var scene="map3d";
 var erosionMax=0.3;
 var mapSplines={
   base:{x:
-[0,0.075,0.2,0.5,0.54,0.57,0.59,1],y:   
+[0,0.075,0.2,0.5,0.57,0.6,0.62,1],y:   
 [0,0.25,0.3,0.35,0.45,0.5,0.52,0.55]},
   erosion:{x:[0,0.5,0.7,1],y:[0,0.1,0.2,erosionMax]},
   LIPs:{x:[0,0.65,1],y:[0,0,0.2]},
   plates:{x:[0,0.5,0.61,0.61,1],y:[0,0,1,0,0]},
   plates2:{x:
-    [1,1.3625,1.4125,1.425,1.4375,1.4875,2,2,2.3625,2.4125,2.425,2.4375,2.4875,2.55,2.7,2.85,2.9 ,3,3,3.1 ,3.15 ,3.175,3.37 ,3.47,3.7 ,3.93,3.97,4,4,5,5,6],y:
-[0,0     ,0.15  ,0.07 ,0.15  ,0.05  ,0,0,0     ,0.15  ,0.07 ,0.15  ,0.07  ,0.09,0.3,0.1 ,0.05,0,0,-0.1,-0.35,-0.05,0   ,0.15,0.65,0.15,0.05,0,0,0,0,0]}, //transverse,transverse former convergent,convergent,none,none
+    [1,1.3625,1.4125,1.425,1.4375,1.4875,2,2,2.3625,2.4125,2.425,2.4375,2.4875,2.55,2.7,2.85,2.9 ,3,3,3.37 ,3.47,3.7 ,3.93,3.97,4,4,5,5,6],y:
+[0,0     ,0.15  ,0.07 ,0.15  ,0.05  ,0,0,0     ,0.15  ,0.07 ,0.15  ,0.07  ,0.09,0.3,0.1 ,0.05,0,0,0    ,0.15,0.65,0.15,0.05,0,0,0,0,0]}, //transverse,transverse former convergent,convergent,none,none
   boundaries:{x:[0,0.2,0.2,0.4,0.4,0.6,0.6,0.8,0.8,1],y:[1,1,2,2,3,3,4,4,5,5]},
   boundaries2:{x:[0,0.2,0.2,0.4,0.4,0.6,0.6,0.8,0.8,1],y:[1,1,3,3,7,7,13,13,17,17]},
   boundaries3:{x:[0,0.1,0.1,1],y:[0,0,1,1]}
@@ -614,8 +614,8 @@ draw=function(){
       boundaries2[i]=[];
       map.ter[i]=[];
       for(j=0;j<cw;j++){
-        baseTer[i][j]=noiseifyPoint([80*map.scale,40*map.scale,20*map.scale,10*map.scale,5*map.scale,2.5*map.scale,1.25*map.scale],[80*map.scale,40*map.scale,20*map.scale,10*map.scale,5*map.scale,2.5*map.scale,1.25*map.scale],[0.45,0.26,0.135,0.0725,0.04125,0.025625,0.015625],mapSplines.base,7,mapSeeds.base,i+map.x*map.scale,j+map.y*map.scale);
-        plates[i][j]=noiseifyPoint([80*map.scale,40*map.scale,20*map.scale,10*map.scale,5*map.scale],[80*map.scale,40*map.scale,20*map.scale,10*map.scale,5*map.scale],[0.45,0.26,0.135,0.02,0.01],mapSplines.plates,5,mapSeeds.base,i+map.x*map.scale,j+map.y*map.scale);
+        baseTer[i][j]=noiseifyPoint([150*map.scale,48*map.scale,24*map.scale,12*map.scale,6*map.scale,3*map.scale,1.5*map.scale],[150*map.scale,48*map.scale,24*map.scale,12*map.scale,6*map.scale,3*map.scale,1.5*map.scale],[0.45,0.34,0.1,0.0425,0.02125,0.015625,0.007],mapSplines.base,7,mapSeeds.base,i+map.x*map.scale,j+map.y*map.scale);
+        plates[i][j]=noiseifyPoint([150*map.scale,48*map.scale,24*map.scale,12*map.scale,6*map.scale,3*map.scale,1.5*map.scale],[150*map.scale,48*map.scale,24*map.scale,12*map.scale,6*map.scale,3*map.scale,1.5*map.scale],[0.45,0.34,0.1,0.0425,0.02125,0.015625,0.007],mapSplines.plates,5,mapSeeds.base,i+map.x*map.scale,j+map.y*map.scale);
         boundaries[i][j]=noiseifyPoint([160*map.scale,80*map.scale],[160*map.scale,80*map.scale],[0.9,0.1],mapSplines.boundaries,2,mapSeeds.boundaries,i+map.x*map.scale,j+map.y*map.scale);
         boundaries2[i][j]=noiseifyPoint([640*map.scale,320*map.scale],[640*map.scale,320*map.scale],[0.9,0.1],mapSplines.boundaries2,2,mapSeeds.boundaries2,i+map.x*map.scale,j+map.y*map.scale);
         erosion[i][j]=noiseifyPoint([32*map.scale,16*map.scale,8*map.scale,4*map.scale],[32*map.scale,16*map.scale,8*map.scale,4*map.scale],[0.5625,0.25,0.125,0.0625],mapSplines.erosion,4,mapSeeds.erosion,i+map.x*map.scale,j+map.y*map.scale);
